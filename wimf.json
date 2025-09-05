@@ -1,0 +1,17 @@
+{
+        "id": "wimf",
+        "name": "What's In My Fool",
+        "author": ["colonthreeing"],
+        "description": "Adds a lil bit of text to show you what card is available inside your fool.",
+        "prefix": "wimf",
+        "main_file": "main.lua",
+        "priority": 0,
+        "badge_text_colour": "E0BA73",
+        "display_name": "What's In My Fool",
+        "version": "1.0.0",
+        "dependencies": [
+                "Steamodded (>=1.*)",
+                "Lovely (>=0.6)"
+        ],
+        "conflicts": []
+}
