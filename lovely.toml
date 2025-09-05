@@ -1,0 +1,37 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]] 
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "function CardArea:draw()"
+position = "before"
+payload = '''
+local fool_card = {name = 'None'}'''
+match_indent = true
+
+[[patches]] 
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "function CardArea:draw()"
+position = "after"
+payload = '''
+if self == G.consumeables then
+    local fool_c = G.GAME.last_tarot_planet and G.P_CENTERS[G.GAME.last_tarot_planet] or nil
+    fool_card.name = fool_c and localize { type = 'name_text', key = fool_c.key, set = fool_c.set } or
+            localize('k_none')
+end'''
+match_indent = true
+
+[[patches]] 
+[patches.pattern]
+target = "cardarea.lua"
+pattern = "{n=G.UIT.T, config={ref_table = self.config, ref_value = 'card_count', scale = 0.3, colour = G.C.WHITE}},"
+position = "before"
+payload = '''
+self == G.consumeables and {n=G.UIT.T, config={ref_table = fool_card, ref_value = 'name', scale = 0.3, colour = G.C.WHITE}} or nil,
+self == G.consumeables and {n=G.UIT.B, config={w = 0.1,h=0.1}} or nil,
+'''
+match_indent = true
