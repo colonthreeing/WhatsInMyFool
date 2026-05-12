@@ -10,7 +10,7 @@
         "display_name": "What's In My Fool",
         "version": "1.0.0",
         "dependencies": [
-                "Steamodded (>=1.*)",
+                "Steamodded (>=1.*~)",
                 "Lovely (>=0.6)"
         ],
         "conflicts": []
